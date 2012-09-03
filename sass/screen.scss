@@ -1,0 +1,20 @@
+@import "base";
+@import "globals";
+@import "jqueryUI";
+@import "fancybox";
+
+// EDWIN'S STYLES
+
+body {
+  background: $color-background;
+  font-family: $p-font-family;
+  height: 100%;
+  width: 100%;
+}
+
+#canvas {
+  border: 1px solid #202020;
+  background: #303030;
+  margin: 50px;
+  cursor: crosshair;
+}

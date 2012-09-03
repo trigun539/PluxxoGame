@@ -1,0 +1,279 @@
+// SITE GLOBALS
+
+// LAYOUT
+
+$page-width: 1024px;
+$container-width: 1002px;
+$content-width: 982px;
+$page-minHeight: 600px;
+$page-margin: 20px;
+$form-input-height: 20px;
+$slider-height: 300px;
+$smallBoxes-width: 302px;
+
+$mainBox-width: 691px;
+$sideBox-width: 250px;
+
+// MASTER COLORS
+$color-background: #a0afd0;
+$color-headerBackground: #1a3b83;
+
+$color-textHighlightBackground: #305cbd;
+$color-textHighlight: #FFFFFF;
+
+$color-mainBorder: #7f7f7f;
+
+$color-buttonBorder: #193ca1;
+$color-buttonGradient1: #2345a7;
+$color-buttonGradient2: #3a68ed;
+$color-buttonBorderOver: #990000;
+$color-buttonGradientOver1: #c41921;
+$color-buttonGradientOver2: #e13636;
+
+$color-blockContainerBackground: #8c9dc2;
+
+$color-link-normal: #1a3b83;
+$color-link-hover: #0018ff;
+
+// FONT
+$font-size: 12px;
+$font-lineHeight: 14px;
+$font-color: #222222;
+$p-font-family: sans-serif;
+$h-font-family: sans-serif;
+
+// MIXINS
+
+@mixin no-padding-margin {
+  margin: 0px;
+  padding: 0px;
+}
+
+@mixin input-style {
+  font-family:"Lucida Grande", Tahoma, Arial, sans-serif;
+  font-size:100%;
+  color:#777;
+  height: $form-input-height;
+  margin:0;
+  padding:2px 0;
+  border-top:1px solid #7c7c7c;
+  border-left:1px solid #c3c3c3;
+  border-right:1px solid #c3c3c3;
+  border-bottom:1px solid #ddd;
+  background:#fff url(../img/design/fieldbg.gif) repeat-x top;
+  
+  @include border-radius(5px);
+  
+}
+
+@mixin input-style-text {
+  font-family:"Lucida Grande", Tahoma, Arial, sans-serif;
+  font-size:100%;
+  color:#777;
+  height: $form-input-height;
+  margin:0;
+  padding:2px 0;
+  border-top:1px solid #7c7c7c;
+  border-left:1px solid #c3c3c3;
+  border-right:1px solid #c3c3c3;
+  border-bottom:1px solid #ddd;
+  background:#fff url(../img/design/fieldbg.gif) repeat-x top;
+}
+
+@mixin input-style-textarea {
+  font-family:"Lucida Grande", Tahoma, Arial, sans-serif;
+  font-size:100%;
+  color:#777;
+  margin:0;
+  padding:2px 0;
+  border-top:1px solid #7c7c7c;
+  border-left:1px solid #c3c3c3;
+  border-right:1px solid #c3c3c3;
+  border-bottom:1px solid #ddd;
+  background:#fff url(../img/design/fieldbg.gif) repeat-x top;
+}
+
+@mixin button-blue-style {
+  border: 1px solid #193ca1;
+  
+  @include box-shadow(rgba(black, 0.4) 0 0 10px, rgba(green, 0.2) 0 0 3px 1px inset);
+  
+  background-color: #2345a7;
+  @include filter-gradient(#2345a7, #3a68ed, vertical);
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(bottom,  #2345a7 0%,#2345a7 50%,#355dd1 51%,#3a68ed 100%));
+}
+
+@mixin button-red-style {
+  border: 1px solid $color-buttonBorderOver;
+  
+  background-color: $color-buttonGradientOver1;
+  @include filter-gradient($color-buttonGradientOver1, $color-buttonGradientOver2, vertical);
+  $experimental-support-for-svg: true;
+  @include background-image(linear-gradient(bottom,  $color-buttonGradientOver1 0%,$color-buttonGradientOver1 50%,$color-buttonGradientOver2 51%,$color-buttonGradientOver2 100%));
+}
+
+@mixin content-style {
+  color: #222222;
+  font-size: 14px;
+  font-family: Helvetica,Arial,sans-serif;
+  line-height: 20px;
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #990000;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-family: Arial;
+    
+    &:first-child {
+      margin-top: 0px;
+    }
+    
+  }
+  
+  h1 {
+    font-size: 24px;
+  }
+  
+  h2 {
+    font-size: 22px;
+    
+    a {
+      text-decoration: none;
+      color: #990000;
+      
+      &:hover {
+        cursor: pointer;
+        color: $color-link-hover;
+      }
+    }
+  }
+  
+  h3 {
+    font-size: 20px;
+  }
+  
+  h4 {
+    font-size: 18px;
+  }
+  
+  h5 {
+    font-size: 16px;
+  }
+  
+  h6 {
+    font-size: 14px;
+  }
+  
+  p {
+    margin: 5px 0px;
+  }
+  
+  a {
+    text-decoration: none;
+    color: $color-link-normal;
+    
+    &:hover {
+      color: $color-link-hover;
+    }
+  }
+  
+  ul {
+    list-style-type: square !important;
+    list-style: square !important;
+    padding-left: 25px;
+    
+    li {
+      padding-left: 0px;
+    }
+    
+  }
+  
+  form {
+    width: $content-width;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+    label {
+      font-weight: bold;
+    }
+    
+    input[type='text'] {
+      @include input-style-text;
+    }
+    
+    textarea {
+      @include input-style-textarea;
+    }
+    
+    div {
+      margin: 10px 0px;
+    }
+    
+  }
+}
+
+@mixin smallBoxes-content {
+  p {
+    margin-bottom: 10px;
+    text-transform:capitalize;   
+  }
+}
+
+@mixin smallLeftHolder {
+  float: left;
+  width: $smallBoxes-width;
+  margin-bottom: 15px;
+}
+
+@mixin smallLeft {
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 16px;
+  background: #313131;
+  margin: 0px;
+  padding: 10px;
+  
+  @include smallBoxes-content;
+}
+
+@mixin smallMidHolder {
+  float: left;
+  width: $smallBoxes-width;
+  margin-bottom: 15px;
+  margin-left: 13px;
+  margin-right: 14px;
+}
+
+@mixin smallMid {
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 16px;
+  background: #313131;
+  margin: 0px;
+  padding: 10px;
+  
+  @include smallBoxes-content;
+}
+
+@mixin smallRightHolder {
+  float: right;
+  width: $smallBoxes-width;
+  margin-bottom: 15px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+@mixin smallRight {
+  float: right;
+  color: #FFFFFF;
+  font-size: 14px;
+  line-height: 16px;
+  background: #313131;
+  margin: 0px;
+  padding: 10px;
+  
+  @include smallBoxes-content;
+}
+

@@ -1,0 +1,46 @@
+/* Welcome to Compass. Use this file to write IE specific override styles.
+ * Import this file using the following HTML or equivalent:
+ * <!--[if IE]>
+ *   <link href="/stylesheets/ie.css" media="screen, projection" rel="stylesheet" type="text/css" />
+ * <![endif]--> */
+
+#search {
+  form {
+    .searchSubmit {
+       background-image: url(../img/design/searchIE.png) !important;
+       
+       &:hover {
+         background-image: url(../img/design/searchOverIE.png) !important;
+       }
+       
+     }
+  }
+}
+
+#mainMenu {
+  
+  ul {
+    
+    li {
+      background: url("../img/design/mainMenuBackground.png") repeat-x top left !important;
+      
+      &:hover {
+        background: url("../img/design/mainMenuBackgroundOver.png") repeat-x top left !important;
+      }
+    }
+  }
+}  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
