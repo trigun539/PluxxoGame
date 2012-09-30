@@ -1,0 +1,60 @@
+if mouseX and mouseY
+    if mouseX > pluxxor.x and mouseY < pluxxor.y           # 4th quadrant
+      adjacent = pluxxor.y - mouseY
+      opposite = mouseX - pluxxor.x
+      pluxxor.angle = (Math.atan(opposite/adjacent) + (2*Math.PI))
+    else if mouseX < pluxxor.x and mouseY < pluxxor.y      # 3rd quadrant
+        adjacent = pluxxor.x - mouseX
+        opposite = pluxxor.y - mouseY
+        pluxxor.angle = (Math.atan(opposite/adjacent) + ((3*Math.PI)/2))
+    else if mouseX < pluxxor.x and mouseY > pluxxor.y      # 2nd quadrant
+        adjacent = mouseY - pluxxor.y
+        opposite = pluxxor.x - mouseX
+        pluxxor.angle = (Math.atan(opposite/adjacent) + Math.PI)
+    else if mouseX > pluxxor.x and mouseY > pluxxor.y      # 1st quadrant
+        adjacent = mouseX - pluxxor.x
+        opposite = mouseY - pluxxor.y
+        pluxxor.angle = (Math.atan(opposite/adjacent) + Math.PI/2)
+    else if mouseX is pluxxor.x and pluxxor.y > mouseY
+        pluxxor.angle = (2*Math.PI)
+    else if mouseX is pluxxor.x and pluxxor.y < mouseY
+        pluxxor.angle = Math.PI
+    else if mouseX < pluxxor.x and pluxxor.y is mouseY
+        pluxxor.angle = (3*Math.PI/2)
+    else if mouseX > pluxxor.x and pluxxor.y is mouseY
+        pluxxor.angle = (Math.PI/2)
+  
+  # X Y MOVEMENT
+  
+  if rightKey
+    pluxxor.x += 2
+  else
+    if leftKey
+      pluxxor.x -= 2
+  if upKey
+    pluxxor.y -= 2
+  else
+    if downKey
+      pluxxor.y += 2
+  
+  # DON'T GET OFF CANVAS
+  
+  pluxxor.x = 5  if pluxxor.x <= 0
+  pluxxor.x = context.canvas.width-5  if pluxxor.x >= context.canvas.width
+  pluxxor.y = 5  if pluxxor.y <= 0
+  pluxxor.y = context.canvas.height-5  if pluxxor.y >= context.canvas.height
+  
+  if pluxxorCounter >= 0 and pluxxorCounter < 10
+    drawSprite pluxxor.img, pluxxor.w * 0, 0, pluxxor.w, pluxxor.h, pluxxor.x, pluxxor.y, pluxxor.angle
+  else if pluxxorCounter >= 10 and pluxxorCounter < 20
+    drawSprite pluxxor.img, pluxxor.w * 1, 0, pluxxor.w, pluxxor.h, pluxxor.x, pluxxor.y, pluxxor.angle 
+  else if pluxxorCounter >= 20 and pluxxorCounter < 30
+    drawSprite pluxxor.img, pluxxor.w * 2, 0, pluxxor.w, pluxxor.h, pluxxor.x, pluxxor.y, pluxxor.angle 
+  else if pluxxorCounter >= 30 and pluxxorCounter < 40    
+    drawSprite pluxxor.img, pluxxor.w * 3, 0, pluxxor.w, pluxxor.h, pluxxor.x, pluxxor.y, pluxxor.angle
+  else
+    if pluxxorCounter is 40
+      pluxxorCounter = 0
+      drawSprite pluxxor.img, pluxxor.w * 3, 0, pluxxor.w, pluxxor.h, pluxxor.x, pluxxor.y, pluxxor.angle
+  
+  pluxxorCounter++

@@ -1,0 +1,65 @@
+i = 0
+
+  while i <= pluxxorArray.length
+    if mouseX and mouseY
+      if mouseX > pluxxorArray[i].x and mouseY < pluxxorArray[i].y           # 4th quadrant
+        adjacent = pluxxorArray[i].y - mouseY
+        opposite = mouseX - pluxxorArray[i].x
+        pluxxorArray[i].angle = (Math.atan(opposite/adjacent) + (2*Math.PI))
+      else if mouseX < pluxxorArray[i].x and mouseY < pluxxorArray[i].y      # 3rd quadrant
+          adjacent = pluxxorArray[i].x - mouseX
+          opposite = pluxxorArray[i].y - mouseY
+          pluxxorArray[i].angle = (Math.atan(opposite/adjacent) + ((3*Math.PI)/2))
+      else if mouseX < pluxxorArray[i].x and mouseY > pluxxorArray[i].y      # 2nd quadrant
+          adjacent = mouseY - pluxxorArray[i].y
+          opposite = pluxxorArray[i].x - mouseX
+          pluxxorArray[i].angle = (Math.atan(opposite/adjacent) + Math.PI)
+      else if mouseX > pluxxorArray[i].x and mouseY > pluxxorArray[i].y      # 1st quadrant
+          adjacent = mouseX - pluxxorArray[i].x
+          opposite = mouseY - pluxxorArray[i].y
+          pluxxorArray[i].angle = (Math.atan(opposite/adjacent) + Math.PI/2)
+      else if mouseX is pluxxorArray[i].x and pluxxorArray[i].y > mouseY
+          pluxxorArray[i].angle = (2*Math.PI)
+      else if mouseX is pluxxorArray[i].x and pluxxorArray[i].y < mouseY
+          pluxxorArray[i].angle = Math.PI
+      else if mouseX < pluxxorArray[i].x and pluxxorArray[i].y is mouseY
+          pluxxorArray[i].angle = (3*Math.PI/2)
+      else if mouseX > pluxxorArray[i].x and pluxxorArray[i].y is mouseY
+          pluxxorArray[i].angle = (Math.PI/2)
+    
+    # X Y MOVEMENT
+    
+    if rightKey
+      pluxxorArray[i].x += 2
+    else
+      if leftKey
+        pluxxorArray[i].x -= 2
+    if upKey
+      pluxxorArray[i].y -= 2
+    else
+      if downKey
+        pluxxorArray[i].y += 2
+    
+    # DON'T GET OFF CANVAS
+    
+    pluxxorArray[i].x = 5  if pluxxorArray[i].x <= 0
+    pluxxorArray[i].x = context.canvas.width-5  if pluxxorArray[i].x >= context.canvas.width
+    pluxxorArray[i].y = 5  if pluxxorArray[i].y <= 0
+    pluxxorArray[i].y = context.canvas.height-5  if pluxxorArray[i].y >= context.canvas.height
+    
+    if pluxxorCounter >= 0 and pluxxorCounter < 10
+      drawSprite pluxxorArray[i].img, pluxxorArray[i].w * 0, 0, pluxxorArray[i].w, pluxxorArray[i].h, pluxxorArray[i].x, pluxxorArray[i].y, pluxxorArray[i].angle
+    else if pluxxorCounter >= 10 and pluxxorCounter < 20
+      drawSprite pluxxorArray[i].img, pluxxorArray[i].w * 1, 0, pluxxorArray[i].w, pluxxorArray[i].h, pluxxorArray[i].x, pluxxorArray[i].y, pluxxorArray[i].angle 
+    else if pluxxorCounter >= 20 and pluxxorCounter < 30
+      drawSprite pluxxorArray[i].img, pluxxorArray[i].w * 2, 0, pluxxorArray[i].w, pluxxorArray[i].h, pluxxorArray[i].x, pluxxorArray[i].y, pluxxorArray[i].angle 
+    else if pluxxorCounter >= 30 and pluxxorCounter < 40    
+      drawSprite pluxxorArray[i].img, pluxxorArray[i].w * 3, 0, pluxxorArray[i].w, pluxxorArray[i].h, pluxxorArray[i].x, pluxxorArray[i].y, pluxxorArray[i].angle
+    else
+      if pluxxorCounter is 40
+        pluxxorCounter = 0
+        drawSprite pluxxorArray[i].img, pluxxorArray[i].w * 3, 0, pluxxorArray[i].w, pluxxorArray[i].h, pluxxorArray[i].x, pluxxorArray[i].y, pluxxorArray[i].angle
+    
+    pluxxorCounter++
+
+    i++
